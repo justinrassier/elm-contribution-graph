@@ -113,8 +113,8 @@ defaultYear contributions zone =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg (Model model) =
     case msg of
-        OnClick seledtedContributions ->
-            ( Model { model | selectedContributions = seledtedContributions }, Cmd.none )
+        OnClick selectedContributions ->
+            ( Model { model | selectedContributions = selectedContributions }, Cmd.none )
 
         OnYearChange newYear ->
             let

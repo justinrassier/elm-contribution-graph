@@ -1,0 +1,468 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  background-color: transparent;
+}
+
+button,
+input {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button {
+  text-transform: none;
+}
+
+[type="button"],
+button {
+  -webkit-appearance: button;
+}
+
+[type="button"]::-moz-focus-inner,
+button::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+[type="button"]:-moz-focusring,
+button:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+details {
+  display: block;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+*,
+::after,
+::before {
+  box-sizing: inherit;
+}
+
+button {
+  background: 0 0;
+  padding: 0;
+}
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  line-height: 1.5;
+}
+
+*,
+::after,
+::before {
+  border-width: 0;
+  border-style: solid;
+  border-color: #e1e1e1;
+}
+
+input::-webkit-input-placeholder {
+  color: #a0aec0;
+}
+
+input::-moz-placeholder {
+  color: #a0aec0;
+}
+
+input:-ms-input-placeholder {
+  color: #a0aec0;
+}
+
+input::-ms-input-placeholder {
+  color: #a0aec0;
+}
+
+input::placeholder {
+  color: #a0aec0;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+button,
+input {
+  padding: 0;
+  line-height: inherit;
+  color: inherit;
+}
+
+svg {
+  display: block;
+  vertical-align: middle;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: #ffffff;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", Helvetica, arial, sans-serif;
+  font-size: 14px;
+  color: #252525;
+}
+
+a {
+  text-decoration: none;
+  color: #1371b9;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+html {
+  line-height: 1.15;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ul {
+  padding-left: 40px;
+  margin: 1em 0;
+}
+
+/*!
+ * Font Awesome Free 5.9.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*!
+ * Font Awesome Free 5.9.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+
+/*!
+ * Font Awesome Free 5.9.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+
+.text-center {
+  text-align: center;
+}
+
+.button {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: 0;
+  display: inline-block;
+  color: #252525;
+  background: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1;
+  border-radius: 4px;
+  border: 1px solid #e1e1e1;
+  padding: 13px 15px;
+  height: 39px;
+  overflow: hidden;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button:focus {
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+.button:hover {
+  background: #e1e1e1;
+  text-decoration: none;
+}
+
+.button:active {
+  background: #c6c6c6;
+  box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.list {
+  margin: 10px 0;
+}
+
+.list li {
+  line-height: 1.313rem;
+  word-wrap: break-word;
+  padding: 3px 0;
+}
+
+.list--flush {
+  margin: 0;
+  padding: 0;
+}
+
+.label {
+  text-transform: uppercase;
+  font-size: 0.688rem;
+  background: 0 0;
+  display: inline-block;
+  line-height: 1;
+  padding: 4px 10px;
+  border: 1px solid grey;
+  font-weight: 800;
+  border-radius: 40px;
+  vertical-align: top;
+}
+
+@keyframes sk-bouncedelay {
+  0%,
+  100%,
+  80% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+@keyframes loading {
+  0% {
+    stroke-dasharray: 0 251;
+    stroke-dashoffset: 502;
+  }
+  50% {
+    stroke-dasharray: 250 1;
+  }
+  100% {
+    stroke-dasharray: 0 251;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes k-loading-animation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes progressbar-indeterminate-animation {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 22px 0;
+  }
+}
+
+@keyframes progressbar-indeterminate-animation {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 22px 0;
+  }
+}
+
+@keyframes k-animation-blink {
+  50% {
+    opacity: 1;
+  }
+}
+
+.radio {
+  position: relative;
+}
+
+.bg-success {
+  background-color: #547a1a;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.flex-none {
+  flex: none;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
+.list-none {
+  list-style-type: none;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mr-4 {
+  margin-right: 1rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-success {
+  color: #547a1a;
+}
+
+.text-primary {
+  color: #252525;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+/*# sourceMappingURL=global.css.map */
+/* NOTE: the xlarge value is also defined as a const in the nav-wrapper.component.ts file for
+ sidebar behavior. Make sure any change to that value is also updated there */
+/*
+  elm-hot creates an additional div wrapper around the app to make HMR possible.
+  This could break styling in development mode if you are using Elm UI.
+
+  More context in the issue:
+    https://github.com/halfzebra/create-elm-app/issues/320
+*/
+
+.text-gray-app-background {
+  color: #efefef;
+}
+
+.leading-8 {
+  line-height: 2rem;
+}
+
+/**
+CSS to style radio buttons as toggle buttons to keep a11y and require no ARIA.
+can't do in Tailwind because  you need pseudo selectors of sibling elements
+https://blog.bitsrc.io/customise-radio-buttons-without-compromising-accessibility-b03061b5ba93
+*/
+.toggle-button {
+  opacity: 0;
+  position: absolute;
+}
+.toggle-button:focus + label {
+  outline: rgba(77, 97, 171, 0.5) auto 3px;
+}
+.toggle-button:checked + label {
+  background-color: #c4dbed;
+}

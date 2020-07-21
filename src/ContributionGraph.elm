@@ -24,14 +24,16 @@ intent is to have leaderboard, so each contribution has a point value associated
 
 -}
 
+import Css exposing (Style, block, display, displayFlex)
 import DateHelpers exposing (formatDate)
-import Html exposing (Html, a, div, input, label, li, span, text, ul)
-import Html.Attributes exposing (checked, class, for, href, id, name, target, title, type_, value)
-import Html.Events exposing (onInput)
+import Html.Styled exposing (Html, a, div, input, label, li, span, text, ul)
+import Html.Styled.Attributes exposing (checked, css, for, href, id, name, target, title, type_, value)
+import Html.Styled.Events exposing (onInput)
 import Platform.Cmd exposing (Cmd)
-import Svg
-import Svg.Attributes
-import Svg.Events exposing (onClick)
+import Styles exposing (button, inline_block, list__flush, mb_2, ml_2, ml_4, mr_4, mt_4, mxAuto, pointer_, pt_4, text_gray_app_background, text_primary, text_success, toggle_button)
+import Svg.Styled
+import Svg.Styled.Attributes
+import Svg.Styled.Events exposing (onClick)
 import Task
 import Time exposing (Month(..), Weekday(..), utc)
 
@@ -149,15 +151,15 @@ update msg (Model model) =
 view : Model -> Html Msg
 view (Model model) =
     let
-        monthTextElements : List (Svg.Svg msg)
+        monthTextElements : List (Svg.Styled.Svg msg)
         monthTextElements =
             [ Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec ]
                 |> List.map viewSvgMonthText
 
         dayTextElements =
-            [ Svg.text_ [ Svg.Attributes.textAnchor "start", Svg.Attributes.dy "50" ] [ Svg.text "Mon" ]
-            , Svg.text_ [ Svg.Attributes.textAnchor "start", Svg.Attributes.dy "81" ] [ Svg.text "Wed" ]
-            , Svg.text_ [ Svg.Attributes.textAnchor "start", Svg.Attributes.dy "111" ] [ Svg.text "Fri" ]
+            [ Svg.Styled.text_ [ Svg.Styled.Attributes.textAnchor "start", Svg.Styled.Attributes.dy "50" ] [ Svg.Styled.text "Mon" ]
+            , Svg.Styled.text_ [ Svg.Styled.Attributes.textAnchor "start", Svg.Styled.Attributes.dy "81" ] [ Svg.Styled.text "Wed" ]
+            , Svg.Styled.text_ [ Svg.Styled.Attributes.textAnchor "start", Svg.Styled.Attributes.dy "111" ] [ Svg.Styled.text "Fri" ]
             ]
 
         yearList : List Int
@@ -174,33 +176,32 @@ view (Model model) =
     in
     div []
         [ div []
-            [ div [ class "flex" ]
+            [ div [ css [ displayFlex ] ]
                 (yearsToDisplay
                     |> List.map
                         (\y ->
-                            div [ class "mr-4" ]
+                            div [ css [ mr_4 ] ]
                                 [ input
                                     [ id (String.fromInt y)
                                     , type_ "radio"
                                     , name "year-select"
-                                    , class "toggle-button"
+                                    , css [ toggle_button ]
                                     , checked (model.year == y)
                                     , onInput OnYearChange
                                     , value (String.fromInt y)
                                     ]
                                     []
-                                , label [ class "button", for (String.fromInt y) ] [ text (String.fromInt y) ]
+                                , label [ css [ button ], for (String.fromInt y) ] [ text (String.fromInt y) ]
                                 ]
                         )
                 )
             , div []
-                [ Svg.svg
-                    [ Svg.Attributes.width "900"
-                    , Svg.Attributes.height "150"
-                    , Svg.Attributes.class
-                        "display-block mx-auto mt-4"
+                [ Svg.Styled.svg
+                    [ Svg.Styled.Attributes.width "900"
+                    , Svg.Styled.Attributes.height "150"
+                    , Svg.Styled.Attributes.css [ display block, mxAuto, mt_4 ]
                     ]
-                    [ Svg.g []
+                    [ Svg.Styled.g []
                         (List.concat
                             [ [ viewSvgYear model.timeZone
                                     model.year
@@ -223,29 +224,20 @@ view (Model model) =
                         )
                     ]
                 , ul
-                    [ class "list list-none list--flush p-4" ]
+                    [ css [ pt_4, list__flush ] ]
                     (model.selectedContributions
                         |> List.map
                             (\c ->
                                 li []
-                                    [ div [ class "flex" ]
-                                        [ div [ class "flex-none w-8 " ]
-                                            [ div [ class "text-white text-xs bg-success rounded-full w-8 h-8" ]
-                                                [ span [ class "inline-block leading-8 text-center w-full" ] [ text ("+" ++ String.fromInt c.points) ]
-                                                ]
-                                            ]
-                                        , div [ class "flex flex-col justify-center" ]
-                                            [ a
-                                                [ class "pointer ml-4"
-                                                , target "_blank"
-                                                , title (formatDate model.timeZone c.mergeTimestamp)
-                                                , href (model.config.repoCommitUrl ++ c.commitSha)
-                                                ]
-                                                (viewTitle
-                                                    c.title
-                                                )
-                                            ]
+                                    [ a
+                                        [ css [ pointer_, ml_4, mb_2, inline_block ]
+                                        , target "_blank"
+                                        , title (formatDate model.timeZone c.mergeTimestamp)
+                                        , href (model.config.repoCommitUrl ++ c.commitSha)
                                         ]
+                                        (viewTitle
+                                            c.title
+                                        )
                                     ]
                             )
                     )
@@ -256,33 +248,33 @@ view (Model model) =
 
 viewTitle : String -> List (Html msg)
 viewTitle title =
-    [ div [ class "ml-2" ]
+    [ span [ css [ ml_2 ] ]
         [ text (formatTitle title)
         ]
     ]
 
 
-viewSvgMonthText : Month -> Svg.Svg msg
+viewSvgMonthText : Month -> Svg.Styled.Svg msg
 viewSvgMonthText month =
-    Svg.text_
-        [ Svg.Attributes.y
+    Svg.Styled.text_
+        [ Svg.Styled.Attributes.y
             "10"
-        , Svg.Attributes.x (String.fromInt (DateHelpers.monthToStandardValue month * 68))
-        , Svg.Attributes.fill "currentColor"
-        , Svg.Attributes.class "text-primary"
+        , Svg.Styled.Attributes.x (String.fromInt (DateHelpers.monthToStandardValue month * 68))
+        , Svg.Styled.Attributes.fill "currentColor"
+        , Svg.Styled.Attributes.css [ text_primary ]
         ]
-        [ Svg.text (DateHelpers.monthToThreeLetterName month) ]
+        [ Svg.Styled.text (DateHelpers.monthToThreeLetterName month) ]
 
 
-viewSvgYear : Time.Zone -> Int -> List Contribution -> Svg.Svg Msg
+viewSvgYear : Time.Zone -> Int -> List Contribution -> Svg.Styled.Svg Msg
 viewSvgYear timeZone year contributions =
-    Svg.g [ Svg.Attributes.transform "translate(20,25)" ]
+    Svg.Styled.g [ Svg.Styled.Attributes.transform "translate(20,25)" ]
         (List.range 0 52
             |> List.map (\v -> viewSvgWeek timeZone year v contributions)
         )
 
 
-viewSvgWeek : Time.Zone -> Int -> Int -> List Contribution -> Svg.Svg Msg
+viewSvgWeek : Time.Zone -> Int -> Int -> List Contribution -> Svg.Styled.Svg Msg
 viewSvgWeek timeZone year weekOfYear contributions =
     let
         calendarStartDayOfWeek =
@@ -314,7 +306,7 @@ viewSvgWeek timeZone year weekOfYear contributions =
         doy weekDay =
             (DateHelpers.weekdayToInt weekDay + 1) + weekStartDay
     in
-    Svg.g [ Svg.Attributes.transform ("translate(" ++ String.fromInt (weekOfYear * 16) ++ ", 0)") ]
+    Svg.Styled.g [ Svg.Styled.Attributes.transform ("translate(" ++ String.fromInt (weekOfYear * 16) ++ ", 0)") ]
         ([ viewSvgDay year (doy Sun) (getContributionsForDayOfYear timeZone year (doy Sun) contributions)
          , viewSvgDay year (doy Mon) (getContributionsForDayOfYear timeZone year (doy Mon) contributions)
          , viewSvgDay year (doy Tue) (getContributionsForDayOfYear timeZone year (doy Tue) contributions)
@@ -330,7 +322,7 @@ viewSvgWeek timeZone year weekOfYear contributions =
         )
 
 
-viewSvgDay : Int -> Int -> List Contribution -> Svg.Svg Msg
+viewSvgDay : Int -> Int -> List Contribution -> Svg.Styled.Svg Msg
 viewSvgDay year dayOfYear contributions =
     let
         dayOfWeek =
@@ -343,29 +335,29 @@ viewSvgDay year dayOfYear contributions =
         yOffset =
             String.fromInt (15 * dayOfWeek)
 
-        fill : String
+        fill : List Style
         fill =
             if List.length contributions > 0 then
-                "text-success cursor-pointer"
+                [ text_success, pointer_ ]
 
             else
-                "text-gray-app-background"
+                [ text_gray_app_background ]
 
         date =
             DateHelpers.dayOfYearToPosix year dayOfYear
                 |> DateHelpers.formatDate utc
     in
-    Svg.rect
-        [ Svg.Attributes.id date
-        , Svg.Attributes.width "11"
-        , Svg.Attributes.height "11"
-        , Svg.Attributes.x "16"
-        , Svg.Attributes.y yOffset
-        , Svg.Attributes.fill "currentColor"
-        , Svg.Attributes.class fill
+    Svg.Styled.rect
+        [ Svg.Styled.Attributes.id date
+        , Svg.Styled.Attributes.width "11"
+        , Svg.Styled.Attributes.height "11"
+        , Svg.Styled.Attributes.x "16"
+        , Svg.Styled.Attributes.y yOffset
+        , Svg.Styled.Attributes.fill "currentColor"
+        , Svg.Styled.Attributes.css fill
         , onClick (OnClick contributions)
         ]
-        [ Svg.title [] [ Svg.text date ] ]
+        [ Svg.Styled.title [] [ Svg.Styled.text date ] ]
 
 
 getContributionsForDayOfYear : Time.Zone -> Int -> Int -> List Contribution -> List Contribution

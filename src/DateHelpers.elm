@@ -1,4 +1,4 @@
-module DateHelpers exposing (dayOfYear, dayOfYearToPosix, daysInYear, firstNDigits, formatDate, formatTime, getDayOfWeek, isLeapYear, isWithinXDays, monthToStandardValue, monthToString, monthToThreeLetterName, toMilliseconds, twoDigitString, weekdayToInt)
+module DateHelpers exposing (dayOfYear, dayOfYearToPosix, daysInYear, firstNDigits, formatDate, formatDateISOish, formatTime, getDayOfWeek, isLeapYear, isWithinXDays, monthToStandardValue, monthToString, monthToThreeLetterName, toMilliseconds, twoDigitString, weekdayToInt)
 
 import Time exposing (Month(..), Posix, Weekday(..), posixToMillis, toDay, toHour, toMinute, toMonth, toYear, utc)
 
@@ -6,6 +6,11 @@ import Time exposing (Month(..), Posix, Weekday(..), posixToMillis, toDay, toHou
 formatDate : Time.Zone -> Posix -> String
 formatDate zone time =
     monthToString (toMonth zone time) ++ "/" ++ twoDigitString (toDay zone time) ++ "/" ++ String.fromInt (toYear utc time)
+
+
+formatDateISOish : Time.Zone -> Posix -> String
+formatDateISOish zone time =
+    String.fromInt (toYear zone time) ++ "-" ++ monthToString (toMonth zone time) ++ "-" ++ twoDigitString (toDay zone time)
 
 
 
@@ -257,43 +262,8 @@ monthToDayOfWeekCalculationValue month =
 
 
 monthToString : Month -> String
-monthToString month =
-    case month of
-        Jan ->
-            "01"
-
-        Feb ->
-            "02"
-
-        Mar ->
-            "03"
-
-        Apr ->
-            "04"
-
-        May ->
-            "05"
-
-        Jun ->
-            "06"
-
-        Jul ->
-            "07"
-
-        Aug ->
-            "08"
-
-        Sep ->
-            "09"
-
-        Oct ->
-            "10"
-
-        Nov ->
-            "11"
-
-        Dec ->
-            "12"
+monthToString =
+    monthToStandardValue >> String.fromInt
 
 
 monthToThreeLetterName : Month -> String

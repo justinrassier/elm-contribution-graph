@@ -1,9 +1,26 @@
-module ContributionGraph exposing (view, update, Config, Contribution, Model, Msg, init, setContributions)
+module ContributionGraph exposing
+    ( Model, Config, Contribution
+    , view, update, Msg
+    , init, setContributions
+    )
 
 {-| This module creates a GitHub-style contribution graph based on a simple Contribution model. The original
 intent is to have leaderboard, so each contribution has a point value associated.
 
-@docs view, update, Config, Contribution, Model, Msg, init, setContributions
+
+# Models
+
+@docs Model, Config, Contribution
+
+
+# Standard Elm Architecture Pieces
+
+@docs view, update, Msg
+
+
+# Common Helpers
+
+@docs init, setContributions
 
 -}
 

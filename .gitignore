@@ -16,3 +16,5 @@ node_modules
 
 # this is compiled now from main.sass
 src/main.css
+
+docs.json

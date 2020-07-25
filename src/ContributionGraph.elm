@@ -57,7 +57,7 @@ type Msg
 Example:
 
     config =
-        { repoCommitUrl = "https://github.com/justinrassier/justin-rassier-gatsby/commit/"
+        { repoCommitUrl = "https://github.com/justinrassier/elm-contribution-graph/"
         }
 
 -}

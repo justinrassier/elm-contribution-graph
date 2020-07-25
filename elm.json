@@ -2,7 +2,7 @@
   "type": "package",
   "name": "justinrassier/elm-contribution-graph",
   "summary": "A GitHub-style SVG contribution graph written in pure Elm",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "version": "1.0.0",
   "exposed-modules": ["ContributionGraph"],
   "elm-version": "0.19.1 <= v < 0.20.0",
